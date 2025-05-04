@@ -1,0 +1,17 @@
+# Task ID: 12
+# Title: Implement Cross-Browser Compatibility
+# Status: pending
+# Dependencies: 1, 2, 3, 5, 10
+# Priority: medium
+# Description: Ensure the extension works consistently across Chrome and Firefox browsers, handling browser-specific APIs and differences.
+# Details:
+1. Create a browser API abstraction layer
+2. Implement browser detection
+3. Handle Manifest V3 differences between Chrome and Firefox
+4. Test and fix content script injection differences
+5. Implement browser-specific storage adapters
+6. Create separate build configurations for each browser
+7. Implement feature detection and fallbacks
+
+# Test Strategy:
+Test the extension in both Chrome and Firefox browsers. Create automated tests using WebdriverIO for cross-browser testing. Verify that all features work consistently across browsers. Test browser-specific code paths. Verify that the abstraction layer correctly handles API differences. Test with different browser versions. Verify that the build process creates valid extensions for each browser.

@@ -1,0 +1,21 @@
+# Task ID: 1
+# Title: Setup Project Repository with Boilerplate
+# Status: pending
+# Dependencies: None
+# Priority: high
+# Description: Initialize the project using Jonghakseo Chrome Extension Boilerplate with React 19, TypeScript, Tailwind CSS, Vite, and Turborepo for monorepo management.
+# Details:
+1. Clone the Jonghakseo Chrome Extension Boilerplate
+2. Configure the project structure for a monorepo setup using Turborepo
+3. Set up the core extension components: background script, content scripts, popup, options page, and new tab dashboard
+4. Configure Vite with Rollup for building the extension
+5. Set up TypeScript configuration
+6. Configure Tailwind CSS
+7. Implement HMR plugin for better developer experience
+8. Set up the basic manifest.json file according to Manifest V3 specifications
+9. Configure i18n package for internationalization
+10. Set up WebdriverIO for end-to-end testing
+11. Consider integrating crxjs.dev/vite-plugin for faster builds
+
+# Test Strategy:
+Verify that the project builds successfully without errors. Test that the extension can be loaded in Chrome and Firefox in development mode. Ensure that all core components (background script, content scripts, popup, options page) are properly initialized.

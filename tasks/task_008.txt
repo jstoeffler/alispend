@@ -1,0 +1,18 @@
+# Task ID: 8
+# Title: Implement Custom Category Management
+# Status: pending
+# Dependencies: 7
+# Priority: medium
+# Description: Develop functionality for users to create, edit, and manage custom categories and assign them to purchases.
+# Details:
+1. Create a UI for category management
+2. Implement CRUD operations for custom categories
+3. Add color coding for categories
+4. Implement drag-and-drop for category organization
+5. Create category rules based on keywords
+6. Add bulk category assignment
+7. Implement category import/export
+8. Add category usage statistics
+
+# Test Strategy:
+Test category creation, editing, and deletion. Verify category assignment to orders. Test category rule creation and application. Verify bulk operations. Test import/export functionality. Verify category persistence across browser sessions.

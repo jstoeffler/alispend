@@ -1,0 +1,124 @@
+# AliSpend - AliExpress Expense Tracking Browser Extension
+
+## Overview
+AliSpend is a browser extension (Chrome, Firefox) that helps users track and analyze their AliExpress shopping expenses. The extension automatically captures order data from AliExpress, calculates total spending, and provides insights on spending patterns over time. By storing comprehensive metadata about each purchase, AliSpend enables features like time-based analysis and budget tracking, all while respecting user privacy.
+
+## Core Features
+1. **AliExpress Order Data Capture**
+   - Automatic detection and extraction of order details from AliExpress
+   - Collection of important metadata (price, date, product details)
+   - Support for different AliExpress pages (order history, checkout)
+   - Manual data correction if needed
+
+2. **Expense Tracking**
+   - Total spending calculation across AliExpress
+   - Time-based filtering (daily, weekly, monthly, yearly, custom)
+   - Currency normalization for international purchases
+   - Historical spending trends visualization
+
+3. **Categorization**
+   - Automatic categorization of AliExpress purchases
+   - Custom category creation and assignment
+   - Category-based spending breakdown
+   - Tag system for flexible organization
+
+4. **Budget Management**
+   - Set monthly or custom period spending limits
+   - Category-specific budget allocation
+   - Notifications when approaching budget thresholds
+   - Budget vs. actual spending comparison
+
+5. **Insights and Analytics**
+   - Visual spending patterns over time
+   - Most frequent purchase categories
+   - Price trend analysis for repeat purchases
+
+## User Experience
+- **Target Users**: AliExpress shoppers, budget-conscious consumers
+- **Key User Flows**:
+  - Extension installation and initial setup
+  - Dashboard viewing via popup or dedicated tab
+  - Order history browsing and filtering
+  - Budget setting and monitoring
+  - Viewing spending analytics
+- **UI/UX Considerations**:
+  - Minimal, clean interface with clear data visualization
+  - Unobtrusive operation while browsing
+  - Dark/light mode toggle
+  - Responsive design for the dashboard
+  - Accessibility compliance
+
+## Technical Architecture
+- **Framework and Tech Stack**:
+  - Built on Jonghakseo Chrome Extension Boilerplate
+  - React 19 for UI components
+  - TypeScript for type safety
+  - Tailwind CSS for styling
+  - Vite with Rollup for building
+  - Turborepo for monorepo management
+
+- **Extension Structure**:
+  - Background script for data processing and storage
+  - Content scripts for AliExpress data extraction
+  - Popup interface for quick insights
+  - Options page for detailed settings
+  - New tab dashboard for comprehensive analytics
+  
+- **Data Management**:
+  - Browser extension storage for user preferences
+  - IndexedDB for order data persistence
+  - Encrypted local storage for sensitive information
+  - Optional data export/import functionality
+
+- **Security**:
+  - All data stored locally on user's device
+  - No external server dependencies for core functionality
+  - Optional encrypted sync between devices
+  - Clear data privacy policy and controls
+
+## Development Roadmap
+- **Phase 1: Core Functionality (MVP)**
+  - Basic order detection for AliExpress
+  - Simple total spending calculation
+  - Basic time filtering (this month, all time)
+  - Minimal popup UI showing spend totals
+  - Extension settings page
+
+- **Phase 2: Enhanced Features**
+  - Improved metadata extraction
+  - Basic categorization system
+  - Simple budget setting and alerts
+  - Enhanced UI with basic charts
+
+- **Phase 3: Advanced Features**
+  - Advanced analytics and visualizations
+  - Custom category creation and management
+  - Detailed budget management by category
+  - Data export/import functionality
+  - Browser sync support (Chrome/Firefox)
+
+## Logical Dependency Chain
+- Implement core extension structure using the boilerplate
+- Develop order detection content scripts for AliExpress
+- Create data storage and management system
+- Build basic popup UI for displaying totals
+- Implement time-based filtering
+- Add categorization capabilities
+- Develop budget management features
+- Build advanced analytics dashboard
+- Add platform-specific optimizations
+
+## Risks and Mitigations
+- **AliExpress Website Changes**: Design modular scrapers with easy update paths
+- **Browser API Limitations**: Thorough research of browser extension capabilities before feature commitment
+- **Performance Impact**: Efficient event listeners and background processing
+- **User Privacy Concerns**: Clear documentation and education about local-only data storage
+- **Cross-Browser Compatibility**: Careful implementation with browser-specific adaptations
+
+## Appendix
+- **Technical Implementation Notes**: 
+  - Leverage Manifest V3 for modern extension capabilities
+  - Implement content script isolation patterns for performance
+  - Use custom i18n package for internationalization
+  - Apply HMR plugin for developer experience
+  - Set up WebdriverIO for end-to-end testing 

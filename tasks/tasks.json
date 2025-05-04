@@ -1,0 +1,136 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Setup Project Repository with Boilerplate",
+      "description": "Initialize the project using Jonghakseo Chrome Extension Boilerplate with React 19, TypeScript, Tailwind CSS, Vite, and Turborepo for monorepo management.",
+      "details": "1. Clone the Jonghakseo Chrome Extension Boilerplate\n2. Configure the project structure for a monorepo setup using Turborepo\n3. Set up the core extension components: background script, content scripts, popup, options page, and new tab dashboard\n4. Configure Vite with Rollup for building the extension\n5. Set up TypeScript configuration\n6. Configure Tailwind CSS\n7. Implement HMR plugin for better developer experience\n8. Set up the basic manifest.json file according to Manifest V3 specifications\n9. Configure i18n package for internationalization\n10. Set up WebdriverIO for end-to-end testing\n11. Consider integrating crxjs.dev/vite-plugin for faster builds",
+      "testStrategy": "Verify that the project builds successfully without errors. Test that the extension can be loaded in Chrome and Firefox in development mode. Ensure that all core components (background script, content scripts, popup, options page) are properly initialized.",
+      "priority": "high",
+      "dependencies": [],
+      "status": "pending",
+      "subtasks": []
+    },
+    {
+      "id": 2,
+      "title": "Implement Data Storage Architecture",
+      "description": "Create the data storage system using IndexedDB for order data persistence, browser extension storage for user preferences, and encrypted local storage for sensitive information.",
+      "details": "1. Create a data model for AliExpress order information\n2. Implement IndexedDB schema for storing order data\n3. Create a storage service with CRUD operations for orders\n4. Implement browser extension storage for user preferences\n5. Add encryption for sensitive information\n6. Create data migration utilities for schema updates\n7. Implement data validation before storage\n8. Add error handling and recovery mechanisms",
+      "testStrategy": "Create unit tests for all CRUD operations. Test data persistence across browser sessions. Verify encryption and decryption of sensitive data. Test migration utilities with different schema versions. Implement stress tests with large datasets to ensure performance.",
+      "priority": "high",
+      "dependencies": [1],
+      "status": "pending",
+      "subtasks": []
+    },
+    {
+      "id": 3,
+      "title": "Develop AliExpress Order Detection Content Script",
+      "description": "Create content scripts that detect and extract order details from AliExpress, including price, product details, date, and category information.",
+      "details": "1. Create content scripts that run on AliExpress domains\n2. Implement detection logic for different AliExpress pages (order history, checkout, order details)\n3. Create DOM parsers for each page type to extract order information\n4. Implement event listeners for page navigation and DOM changes\n5. Create a robust selector system that can handle minor website changes\n6. Implement error handling for when selectors fail\n7. Add logging for debugging purposes\n8. Create a messaging system to communicate with the background script",
+      "testStrategy": "Create mock AliExpress pages with sample order data. Test the content scripts against these mocks to verify correct data extraction. Implement unit tests for each parser function. Manually test on actual AliExpress pages to ensure accurate detection and extraction.",
+      "priority": "high",
+      "dependencies": [1, 2],
+      "status": "pending",
+      "subtasks": []
+    },
+    {
+      "id": 4,
+      "title": "Implement Manual Data Correction",
+      "description": "Create functionality for users to manually correct or add order data that might be missed or incorrectly captured by the automatic detection.",
+      "details": "1. Design and implement a form for manual order entry\n2. Create an order editing interface\n3. Implement validation for manually entered data\n4. Add bulk import functionality for orders\n5. Create a UI for reviewing and correcting automatically detected orders\n6. Implement data merging for partial detections\n7. Add conflict resolution for duplicate orders",
+      "testStrategy": "Test form validation with various input scenarios. Verify data saving and error handling. Test the order editing interface with existing orders. Verify conflict resolution for duplicate orders.",
+      "priority": "medium",
+      "dependencies": [2, 3],
+      "status": "pending",
+      "subtasks": []
+    },
+    {
+      "id": 5,
+      "title": "Create Basic Popup UI",
+      "description": "Develop the extension popup interface showing total spending, recent orders, and quick access to main features.",
+      "details": "1. Create a React component structure for the popup\n2. Implement a responsive layout using Tailwind CSS\n3. Design and implement the main spending summary component\n4. Add navigation to options page and dashboard\n5. Implement dark/light mode toggle\n6. Create loading states and error handling UI\n7. Ensure accessibility compliance\n8. Optimize for performance considering popup size limitations",
+      "testStrategy": "Implement component tests using React Testing Library. Test UI rendering in both light and dark modes. Verify responsive behavior at different widths. Test loading states and error handling. Conduct accessibility testing using tools like axe-core. Manually test the popup in both Chrome and Firefox.",
+      "priority": "medium",
+      "dependencies": [2, 3],
+      "status": "pending",
+      "subtasks": []
+    },
+    {
+      "id": 6,
+      "title": "Implement Time-Based Filtering",
+      "description": "Create functionality for filtering expense data by different time periods (daily, weekly, monthly, yearly, custom date range).",
+      "details": "1. Implement a data processing service in the background script\n2. Create functions for calculating total spending across all orders\n3. Implement currency normalization for international purchases\n4. Add time-based filtering (daily, weekly, monthly, yearly, custom)\n5. Create data aggregation functions for different time periods\n6. Implement caching mechanisms for improved performance\n7. Add data validation and sanitization",
+      "testStrategy": "Create unit tests for all data processing functions. Test with mock order data covering various scenarios (different time periods, currencies, etc.). Verify time-based filtering with edge cases (month boundaries, leap years, etc.). Benchmark performance with large datasets.",
+      "priority": "medium",
+      "dependencies": [2, 5],
+      "status": "pending",
+      "subtasks": []
+    },
+    {
+      "id": 7,
+      "title": "Develop Automatic Categorization System",
+      "description": "Create a system for automatic categorization of AliExpress purchases, including custom category creation and a tag system.",
+      "details": "1. Design a category data model with hierarchical structure\n2. Implement default categories for common AliExpress purchases\n3. Create an algorithm for automatic categorization based on product details\n4. Implement manual category assignment functionality\n5. Add custom category creation and management\n6. Develop a tagging system for flexible organization\n7. Create a category-based spending breakdown calculator\n8. Implement category persistence and synchronization",
+      "testStrategy": "Create unit tests for categorization algorithms with various product types. Test category CRUD operations. Verify automatic categorization accuracy with real AliExpress product names. Test category-based spending calculations. Verify tag system functionality. Test edge cases like products that could fit multiple categories.",
+      "priority": "medium",
+      "dependencies": [2, 3],
+      "status": "pending",
+      "subtasks": []
+    },
+    {
+      "id": 8,
+      "title": "Implement Custom Category Management",
+      "description": "Develop functionality for users to create, edit, and manage custom categories and assign them to purchases.",
+      "details": "1. Create a UI for category management\n2. Implement CRUD operations for custom categories\n3. Add color coding for categories\n4. Implement drag-and-drop for category organization\n5. Create category rules based on keywords\n6. Add bulk category assignment\n7. Implement category import/export\n8. Add category usage statistics",
+      "testStrategy": "Test category creation, editing, and deletion. Verify category assignment to orders. Test category rule creation and application. Verify bulk operations. Test import/export functionality. Verify category persistence across browser sessions.",
+      "priority": "medium",
+      "dependencies": [7],
+      "status": "pending",
+      "subtasks": []
+    },
+    {
+      "id": 9,
+      "title": "Develop Budget Management Features",
+      "description": "Create functionality for setting monthly or custom period spending limits, category-specific budgets, and budget notifications.",
+      "details": "1. Create a budget data model\n2. Implement monthly and custom period budget setting\n3. Add category-specific budget allocation\n4. Create a budget comparison calculator (budget vs. actual spending)\n5. Implement threshold notification system\n6. Add budget visualization components\n7. Create budget history tracking\n8. Implement budget reset functionality for recurring periods",
+      "testStrategy": "Create unit tests for budget creation and management. Test budget status calculations with various spending scenarios. Verify threshold notifications at different levels. Test budget period handling (monthly resets, custom periods). Test category-specific budgets. Verify budget history tracking. Test edge cases like overspending and zero budgets.",
+      "priority": "medium",
+      "dependencies": [6, 8],
+      "status": "pending",
+      "subtasks": []
+    },
+    {
+      "id": 10,
+      "title": "Create Comprehensive Dashboard UI",
+      "description": "Develop a full-featured dashboard for the extension's new tab page, showing spending analytics, budget status, and detailed order history.",
+      "details": "1. Design and implement a dashboard layout\n2. Create spending trend charts (line/bar charts)\n3. Implement category breakdown visualizations (pie/donut charts)\n4. Add budget vs. actual spending comparisons\n5. Create time-based filtering controls\n6. Implement most frequent purchase analysis\n7. Add price trend analysis for repeat purchases\n8. Create exportable reports",
+      "testStrategy": "Implement component tests for dashboard elements. Test data visualization components with various datasets. Verify time-based filtering functionality. Test responsiveness on different screen sizes. Verify data loading states and error handling. Test chart interactions and tooltips. Conduct accessibility testing for all dashboard components.",
+      "priority": "medium",
+      "dependencies": [5, 6, 7, 9],
+      "status": "pending",
+      "subtasks": []
+    },
+    {
+      "id": 11,
+      "title": "Implement Data Export/Import and Sync",
+      "description": "Create functionality for exporting and importing order data, and optional encrypted sync between devices.",
+      "details": "1. Implement data export to JSON format\n2. Create a CSV export option for compatibility with spreadsheet software\n3. Implement data import from JSON\n4. Add validation for imported data\n5. Create a UI for import/export operations\n6. Implement conflict resolution for imports\n7. Add progress indicators for large data operations\n8. Implement optional encrypted cross-browser sync",
+      "testStrategy": "Create unit tests for export and import functions. Test with various data sizes and structures. Verify CSV export format compatibility with common spreadsheet software. Test import validation with valid and invalid data. Test conflict resolution during import. Verify progress indicators for large data operations. Test error handling during import/export operations.",
+      "priority": "low",
+      "dependencies": [2],
+      "status": "pending",
+      "subtasks": []
+    },
+    {
+      "id": 12,
+      "title": "Implement Cross-Browser Compatibility",
+      "description": "Ensure the extension works consistently across Chrome and Firefox browsers, handling browser-specific APIs and differences.",
+      "details": "1. Create a browser API abstraction layer\n2. Implement browser detection\n3. Handle Manifest V3 differences between Chrome and Firefox\n4. Test and fix content script injection differences\n5. Implement browser-specific storage adapters\n6. Create separate build configurations for each browser\n7. Implement feature detection and fallbacks",
+      "testStrategy": "Test the extension in both Chrome and Firefox browsers. Create automated tests using WebdriverIO for cross-browser testing. Verify that all features work consistently across browsers. Test browser-specific code paths. Verify that the abstraction layer correctly handles API differences. Test with different browser versions. Verify that the build process creates valid extensions for each browser.",
+      "priority": "medium",
+      "dependencies": [1, 2, 3, 5, 10],
+      "status": "pending",
+      "subtasks": []
+    }
+  ]
+}
