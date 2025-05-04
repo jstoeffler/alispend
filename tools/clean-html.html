@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HTML Cleaner</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    textarea, input, button {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      font-size: 16px;
+    }
+    textarea {
+      height: 150px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>HTML Cleaner</h2>
+
+  <label for="inputHTML">Input HTML:</label>
+  <textarea id="inputHTML" placeholder="Paste your HTML here..."></textarea>
+
+  <label for="tagsToRemove">Tags to remove (comma-separated):</label>
+  <input type="text" id="tagsToRemove" value="style,script,link,path,svg" />
+
+  <button onclick="removeTags()">Remove Tags</button>
+
+  <label for="outputHTML">Output HTML:</label>
+  <textarea id="outputHTML" readonly></textarea>
+
+  <script>
+    function removeTags() {
+      const inputHTML = document.getElementById("inputHTML").value;
+      const tags = document.getElementById("tagsToRemove").value
+        .split(',')
+        .map(tag => tag.trim().toLowerCase())
+        .filter(tag => tag);
+
+      let output = inputHTML;
+
+      tags.forEach(tag => {
+        const regex = new RegExp(`<${tag}(\\s[^>]*)?>.*?<\\/${tag}>`, 'gis');
+        const selfClosing = new RegExp(`<${tag}(\\s[^>]*)?\\/?>`, 'gi'); 
+        output = output.replace(regex, '');
+        output = output.replace(selfClosing, '');
+      });
+
+      document.getElementById("outputHTML").value = output;
+    }
+  </script>
+
+</body>
+</html>

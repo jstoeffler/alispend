@@ -40,3 +40,6 @@ dev-debug.log
 *.njsproj
 *.sln
 *.sw?
+
+# Ignore sample HTML pages for privacy
+assets
