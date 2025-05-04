@@ -3,16 +3,50 @@
 # Status: pending
 # Dependencies: 1, 2
 # Priority: high
-# Description: Create content scripts that detect and extract order details from AliExpress, including price, product details, date, and category information.
+# Description: Create a highly modular content script system that detects and extracts order details from AliExpress, with support for different languages, page structures, and frequent website updates.
 # Details:
-1. Create content scripts that run on AliExpress domains
-2. Implement detection logic for different AliExpress pages (order history, checkout, order details)
-3. Create DOM parsers for each page type to extract order information
-4. Implement event listeners for page navigation and DOM changes
-5. Create a robust selector system that can handle minor website changes
-6. Implement error handling for when selectors fail
-7. Add logging for debugging purposes
-8. Create a messaging system to communicate with the background script
+1. Design a modular architecture for the AliExpress crawler
+   - Create separate modules for different page types (order history, checkout, order details)
+   - Implement a plugin system for different scraping strategies
+   - Develop an abstraction layer to isolate DOM interaction logic
+
+2. Implement language and region-specific adaptations
+   - Create language detection mechanism
+   - Design selectors that work across different language versions
+   - Store language-specific selector patterns in configuration files
+
+3. Develop robust selector strategies
+   - Implement multiple fallback selector mechanisms (CSS, XPath, text-based)
+   - Create selector versioning system for different AliExpress layouts
+   - Add automatic selector testing and validation
+
+4. Build comprehensive testing infrastructure
+   - Create a repository of sample AliExpress pages in assets/order-pages/
+   - Implement automated tests against these sample pages
+   - Design a visual testing tool for debugging selector failures
+   - Add regression testing to prevent breaking changes
+
+5. Create version detection and update mechanism
+   - Add detection for AliExpress site version changes
+   - Implement remote configuration updates for selectors
+   - Create monitoring system to detect website structure changes
+
+6. Implement error handling and diagnostics
+   - Add detailed logging for scraping attempts
+   - Create self-healing mechanisms for broken selectors
+   - Implement graceful degradation when full extraction isn't possible
+
+7. Add data normalization and validation
+   - Create validators for extracted data
+   - Implement data cleaning and transformation
+   - Add mechanisms to handle incomplete data
 
 # Test Strategy:
-Create mock AliExpress pages with sample order data. Test the content scripts against these mocks to verify correct data extraction. Implement unit tests for each parser function. Manually test on actual AliExpress pages to ensure accurate detection and extraction.
+Create a comprehensive test suite with:
+1. Unit tests for each scraper module using JSDOM
+2. Integration tests against sample HTML pages stored in assets/order-pages/
+3. Visual regression tests to detect selector failures
+4. Snapshot testing for data extraction consistency
+5. End-to-end tests with mocked AliExpress pages
+6. Manual testing on actual AliExpress pages for verification
+7. Continuous testing against different languages and regions
